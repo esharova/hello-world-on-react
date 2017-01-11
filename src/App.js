@@ -13,7 +13,11 @@ class App extends Component {
     return (
         <div>
           {this.props.stores.map(function (store, index) {
-            return <Hero key={index} item={store} onAddLike={_this.addLike.bind(_this, index)}/>
+            store = {
+                ...store,
+                onAddLike: _this.addLike.bind(_this, index)
+            }
+            return <Hero key={index} item={store}/>
           })}
         </div>
     );

@@ -10,7 +10,7 @@ class Hero extends Component {
             <div className="caption">
               <h3>{this.props.item.title}</h3>
               <p>{this.props.item.subtitle}</p>
-              <LikeCounter count={this.props.item.likes} onCount={this.props.onAddLike}/>
+              <LikeCounter count={this.props.item.likes} onCount={this.props.item.onAddLike}/>
             </div>
           </div>
         </div>
