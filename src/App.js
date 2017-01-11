@@ -5,15 +5,15 @@ import Hero from './Hero';
 
 class App extends Component {
   addLike(id) {
-    console.log('addLike', id);
+    console.log('Components addLike');
     this.props.onAddLike(id);
   }
   render() {
     var _this = this;
     return (
         <div>
-          {this.props.stores.map(function (store) {
-            return <Hero key={store.id} id={store.id} title={store.title} subtitle={store.subtitle} imgUrl={store.imageUrl} likes={store.likes} onAddLike={_this.addLike.bind(_this, store.id)}/>
+          {this.props.stores.map(function (store, index) {
+            return <Hero key={index} item={store} onAddLike={_this.addLike.bind(_this, index)}/>
           })}
         </div>
     );
@@ -26,7 +26,7 @@ export default connect(
     }),
     dispatch => ({
       onAddLike: (id) => {
-        console.log('Dispatch onAddLike', id);
+        console.log('Dispatch onAddLike');
         dispatch({ type: 'ADD_LIKE', id: id });
       }
     })

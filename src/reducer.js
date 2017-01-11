@@ -31,14 +31,13 @@ const initialState = [
 
 function framework(state = initialState, action) {
   if (action.type === 'ADD_LIKE') {
-    console.log('ADD_LIKE', state[action.id]);
-
+    console.log('Reducer ADD_LIKE');
     state[action.id] = {
       ...state[action.id],
       likes: ++state[action.id].likes
     };
 
-    return state.slice(0);
+    return state = [...state];
   }
 
   return state;
