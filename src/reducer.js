@@ -32,9 +32,9 @@ const initialState = [
 export default function framework(state = initialState, action) {
   if (action.type === 'ADD_LIKE') {
     console.log('Reducer ADD_LIKE');
-    state[action.id] = {
-      ...state[action.id],
-      likes: ++state[action.id].likes
+    state[action.store.id] = {
+      ...state[action.store.id],
+      likes: ++state[action.store.id].likes
     };
     return state = [...state];
   }

@@ -1,39 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Hero from './Hero';
 
+import { onAddLike } from './actions';
+
 class App extends Component {
-  addLike(id) {
+
+  handleAddLike(store) {
     console.log('Components addLike');
-    this.props.onAddLike(id);
+    this.props.onAddLike && this.props.onAddLike(store);
   }
+
   render() {
-    var _this = this;
     return (
         <div>
-          {this.props.stores.map(function (store, index) {
-            store = {
-                ...store,
-                onAddLike: _this.addLike.bind(_this, index)
-            }
-            return <Hero key={index} item={store}/>
+          {this.props.stores.map((store) => {
+            return <Hero
+                key={ store.id }
+                item={ store }
+                onAddLike={ this.handleAddLike.bind(this) } />
           })}
         </div>
     );
   }
 }
 
+const getActions = (dispatch) =>
+    bindActionCreators({
+        onAddLike
+    }, dispatch);
+
 export default connect(
     state => ({
       stores: state
     }),
-    dispatch => ({
-      onAddLike: (id) => {
-        console.log('Dispatch onAddLike');
-        dispatch({ type: 'ADD_LIKE', id: id });
-      }
-    })
+    getActions
 )(App);
 
 

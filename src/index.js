@@ -5,8 +5,6 @@ import { createStore } from 'redux';
 import App from './App';
 import framework from  './reducer';
 
-
-
 const store = createStore(framework, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
